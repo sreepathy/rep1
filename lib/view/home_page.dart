@@ -252,132 +252,134 @@ class _HomePageState extends State<HomePage> {
   openCurrentEmployeeInfo(BuildContext context) {
     _bottomSheetIsOpen = true;
     scaffoldKey.currentState.showBottomSheet((context) {
-      return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
+      return SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
 
-          children: <Widget>[
-            Image.memory(
-              base64Decode(empList[_selectedEmployee].avatar), height: 150,),
-            Row(
-                children:
-                [
-                  Text('Name: ', style: Theme
-                      .of(context)
-                      .textTheme
-                      .subhead
-                      .copyWith(color: Colors.tealAccent)),
-                  Text(empList[_selectedEmployee].name, style: Theme
-                      .of(context)
-                      .textTheme
-                      .subhead
-                      .copyWith(
-                    fontWeight: FontWeight.bold, color: Colors.white,),),
-                ]
-            ),
-            Row(
-                children:
-                [
-                  Text('Employee No: ', style: Theme
-                      .of(context)
-                      .textTheme
-                      .subhead
-                      .copyWith(color: Colors.tealAccent),),
-                  Text(empList[_selectedEmployee].id.toString(), style: Theme
-                      .of(context)
-                      .textTheme
-                      .subhead
-                      .copyWith(
-                    fontWeight: FontWeight.bold, color: Colors.white,),),
-                ]
+            children: <Widget>[
+              Image.memory(
+                base64Decode(empList[_selectedEmployee].avatar), height: 150,),
+              Row(
+                  children:
+                  [
+                    Text('Name: ', style: Theme
+                        .of(context)
+                        .textTheme
+                        .subhead
+                        .copyWith(color: Colors.tealAccent)),
+                    Text(empList[_selectedEmployee].name, style: Theme
+                        .of(context)
+                        .textTheme
+                        .subhead
+                        .copyWith(
+                      fontWeight: FontWeight.bold, color: Colors.white,),),
+                  ]
+              ),
+              Row(
+                  children:
+                  [
+                    Text('Employee No: ', style: Theme
+                        .of(context)
+                        .textTheme
+                        .subhead
+                        .copyWith(color: Colors.tealAccent),),
+                    Text(empList[_selectedEmployee].id.toString(), style: Theme
+                        .of(context)
+                        .textTheme
+                        .subhead
+                        .copyWith(
+                      fontWeight: FontWeight.bold, color: Colors.white,),),
+                  ]
 
-            ),
-            Row(
-                children:
-                [
-                  Text('Email: ', style: Theme
-                      .of(context)
-                      .textTheme
-                      .subhead
-                      .copyWith(color: Colors.tealAccent),),
-                  Text(empList[_selectedEmployee].email, style: Theme
-                      .of(context)
-                      .textTheme
-                      .subhead
-                      .copyWith(
-                    fontWeight: FontWeight.bold, color: Colors.white,),),
-                ]
+              ),
+              Row(
+                  children:
+                  [
+                    Text('Email: ', style: Theme
+                        .of(context)
+                        .textTheme
+                        .subhead
+                        .copyWith(color: Colors.tealAccent),),
+                    Text(empList[_selectedEmployee].email, style: Theme
+                        .of(context)
+                        .textTheme
+                        .subhead
+                        .copyWith(
+                      fontWeight: FontWeight.bold, color: Colors.white,),),
+                  ]
 
-            ),
+              ),
 
-            Row(
-                children:
-                [
-                  Text('Phone: ', style: Theme
-                      .of(context)
-                      .textTheme
-                      .subhead
-                      .copyWith(color: Colors.tealAccent),),
-                  Text(empList[_selectedEmployee].mobile, style: Theme
-                      .of(context)
-                      .textTheme
-                      .subhead
-                      .copyWith(
-                    fontWeight: FontWeight.bold, color: Colors.white,),),
-                ]
+              Row(
+                  children:
+                  [
+                    Text('Phone: ', style: Theme
+                        .of(context)
+                        .textTheme
+                        .subhead
+                        .copyWith(color: Colors.tealAccent),),
+                    Text(empList[_selectedEmployee].mobile, style: Theme
+                        .of(context)
+                        .textTheme
+                        .subhead
+                        .copyWith(
+                      fontWeight: FontWeight.bold, color: Colors.white,),),
+                  ]
 
-            ),
+              ),
 
-            Row(
-                children:
-                [
-                  Text('DOB: ', style: Theme
-                      .of(context)
-                      .textTheme
-                      .subhead
-                      .copyWith(color: Colors.tealAccent),),
-                  Text(
-                  new DateFormat("dd-MM-yyyy").format(DateTime.parse( empList[_selectedEmployee].dob))
-                    , style: Theme
-                      .of(context)
-                      .textTheme
-                      .subhead
-                      .copyWith(
-                    fontWeight: FontWeight.bold, color: Colors.white,),),
-                ]
-
-            ),
-            Row(crossAxisAlignment: CrossAxisAlignment.start,
-                children:
-                [
-                  Text('Address: ', style: Theme
-                      .of(context)
-                      .textTheme
-                      .subhead
-                      .copyWith(color: Colors.tealAccent),),
-                  Flexible(
-                    child: Text(
-                      empList[_selectedEmployee].address.replaceAll(new RegExp(r'[\n]'), ', ')
+              Row(
+                  children:
+                  [
+                    Text('DOB: ', style: Theme
+                        .of(context)
+                        .textTheme
+                        .subhead
+                        .copyWith(color: Colors.tealAccent),),
+                    Text(
+                    new DateFormat("dd-MM-yyyy").format(DateTime.parse( empList[_selectedEmployee].dob))
                       , style: Theme
                         .of(context)
                         .textTheme
                         .subhead
                         .copyWith(
                       fontWeight: FontWeight.bold, color: Colors.white,),),
-                  ),
-                ]
+                  ]
 
-            ),
-            RaisedButton(
-              child: Text('Close'),
-              onPressed: (){
-                _bottomSheetIsOpen = false;
-                Navigator.pop(context);
-              },
-            )
+              ),
+              Row(crossAxisAlignment: CrossAxisAlignment.start,
+                  children:
+                  [
+                    Text('Address: ', style: Theme
+                        .of(context)
+                        .textTheme
+                        .subhead
+                        .copyWith(color: Colors.tealAccent),),
+                    Flexible(
+                      child: Text(
+                        empList[_selectedEmployee].address.replaceAll(new RegExp(r'[\n]'), ', ')
+                        , style: Theme
+                          .of(context)
+                          .textTheme
+                          .subhead
+                          .copyWith(
+                        fontWeight: FontWeight.bold, color: Colors.white,),),
+                    ),
+                  ]
+
+              ),
+              RaisedButton(
+                child: Text('Close'),
+                onPressed: (){
+                  _bottomSheetIsOpen = false;
+                  Navigator.pop(context);
+                },
+              )
 
 
-          ],
+            ],
+          ),
         ),
       );
     });
