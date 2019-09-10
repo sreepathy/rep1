@@ -237,7 +237,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   setCurrentEmployee() async {
-    setState(() {});
+    showSnackbar("Current Employee: " + empList[_selectedEmployee].name);
     LatLng selectedEmployeeLocation = empList[_selectedEmployee].latLong;
     mapController.moveCamera(
       CameraUpdate.newCameraPosition(
@@ -371,6 +371,7 @@ class _HomePageState extends State<HomePage> {
             RaisedButton(
               child: Text('Close'),
               onPressed: (){
+                _bottomSheetIsOpen = false;
                 Navigator.pop(context);
               },
             )
@@ -420,5 +421,15 @@ class _HomePageState extends State<HomePage> {
     completer = new Completer<Null>();
     await getEmployees();
     return completer.future.then((_) {});
+  }
+  showSnackbar(String text) {
+    scaffoldKey.currentState.showSnackBar(new SnackBar(
+      duration: Duration(seconds: 2),
+        backgroundColor: Colors.red[999],
+        content: new Text(
+          text,
+          textAlign: TextAlign.center,
+          style: TextStyle(color: Colors.white, fontSize: 14.0),
+        )));
   }
 }
